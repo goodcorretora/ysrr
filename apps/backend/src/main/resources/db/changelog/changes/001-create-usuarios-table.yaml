@@ -1,0 +1,74 @@
+databaseChangeLog:
+  - changeSet:
+      id: 001-create-usuarios-table
+      author: seu_nome # Não esqueça de trocar para o seu nome!
+      changes:
+        - createTable:
+            tableName: usuarios
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name # Novo campo para o nome do usuário
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: email
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    unique: true
+              - column:
+                  name: senha
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: telefone
+                  type: VARCHAR(20) # Tamanho razoável para telefones, incluindo DDD e país
+                  constraints:
+                    unique: true # Pode ser nulo, mas se preenchido, deve ser único
+              - column:
+                  name: data_cadastro
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: data_ultimo_login
+                  type: TIMESTAMP
+              - column:
+                  name: email_verificado
+                  type: BOOLEAN
+                  defaultValueBoolean: false # Valor padrão para novo cadastro
+                  constraints:
+                    nullable: false
+              - column:
+                  name: codigo_verificacao_email
+                  type: VARCHAR(6) # Para códigos de 6 dígitos
+              - column:
+                  name: data_expiracao_codigo_email
+                  type: TIMESTAMP
+              - column:
+                  name: telefone_verificado
+                  type: BOOLEAN
+                  defaultValueBoolean: false # Valor padrão para novo cadastro
+                  constraints:
+                    nullable: false
+              - column:
+                  name: codigo_verificacao_telefone
+                  type: VARCHAR(6) # Para códigos de 6 dígitos
+              - column:
+                  name: data_expiracao_codigo_telefone
+                  type: TIMESTAMP
+              - column:
+                  name: token_reset_senha
+                  type: VARCHAR(255) # Para tokens de reset de senha (pode ser UUID completo)
+              - column:
+                  name: data_expiracao_token_senha
+                  type: TIMESTAMP

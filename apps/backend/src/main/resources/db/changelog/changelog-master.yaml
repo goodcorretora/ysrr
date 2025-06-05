@@ -1,0 +1,4 @@
+databaseChangeLog:
+  - include:
+      # Caminho completo a partir da raiz do classpath (src/main/resources)
+      file: db/changelog/changes/001-create-usuarios-table.yaml
